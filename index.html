@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Matrix Multiplication</title>
+
+    <script type="text/javascript">
+
+      var matrixArray;
+      var matrixArray2;
+      var row_count = 0;
+      var col_count = 0;
+
+      var row_count_2 = 0;
+      var col_count_2 = 0;
+
+      function createMatrix1(){
+
+        row_count = parseInt(document.getElementById("m1").value);
+        matrixArray = new Array(row_count);
+        col_count = parseInt(document.getElementById("m2").value);
+
+        for(var i = 0; i < row_count; i++){
+
+          matrixArray[i] = new Array(col_count)
+
+        }
+
+        console.log(matrixArray);
+      }
+
+
+      function addElements1(){
+
+        console.log(row_count, col_count);
+
+        for(var i = 0; i < row_count; i++){
+
+          for(var j = 0; j < col_count; j++){
+
+            matrixArray[i][j] = parseInt(prompt("Enter value"));
+
+          }
+
+        }
+
+      }
+
+
+      function createMatrix2(){
+
+        row_count_2 = parseInt(document.getElementById("m3").value);
+        matrixArray2 = new Array(row_count_2);
+        col_count_2 = parseInt(document.getElementById("m4").value);
+
+        for(var i = 0; i < row_count_2; i++){
+
+          matrixArray2[i] = new Array(col_count_2)
+
+        }
+
+        console.log(matrixArray2);
+      }
+
+
+      function addElements2(){
+
+        console.log(row_count_2, col_count_2);
+
+        for(var i = 0; i < row_count_2; i++){
+
+          for(var j = 0; j < col_count_2; j++){
+
+            matrixArray2[i][j] = parseInt(prompt("Enter value"));
+
+          }
+
+        }
+
+      }
+
+      function mulMatrix(){
+
+        a = matrixArray;
+        b = matrixArray2;
+
+        var aNumRows = a.length, aNumCols = a[0].length,
+        bNumRows = b.length, bNumCols = b[0].length,
+        m = new Array(aNumRows);  // initialize array of rows
+        for (var r = 0; r < aNumRows; ++r) {
+          m[r] = new Array(bNumCols); // initialize the current row
+            for (var c = 0; c < bNumCols; ++c) {
+              m[r][c] = 0;             // initialize the current cell
+              for (var i = 0; i < aNumCols; ++i) {
+                m[r][c] += a[r][i] * b[i][c];
+              }
+            }
+          }
+          console.log(m);
+      }
+
+    </script>
+
+  </head>
+  <body>
+
+    <input id="m1" placeholder="Enter No rows">
+    <input id="m2" placeholder="Enter No cols">
+    <button id='createMatrix' onclick='createMatrix1()' name="button">Create Matrix1</button>
+    <button id="addEle" onclick="addElements1()" >Enter element</button>
+<br>
+    <input id="m3" placeholder="Enter No rows">
+    <input id="m4" placeholder="Enter No cols">
+    <button id='createMatrix' onclick='createMatrix2()' name="button">Create Matrix2</button>
+    <button id="addEle" onclick="addElements2()" >Enter element</button>
+
+
+    <br><br>
+
+    <button id="mulMatrix" onclick="mulMatrix()"> Multiply Matriix </button>
+    <!-- <input id="el2" placeholder="Enter element"> -->
+
+    <br><br>
+
+    <!-- <button onclick="fn1()" id='btnSub'>Calculate</button> -->
+    <textarea id='txtOP'></textarea>
+
+  </body>
+</html>
